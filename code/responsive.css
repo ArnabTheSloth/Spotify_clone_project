@@ -1,0 +1,114 @@
+@media screen and (max-width: 1275px) {
+    html {
+        font-size: 15px;
+    }
+
+    div.songlist ul li {
+        padding: 5px;
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    div.left {
+        width: 400px;
+        position: absolute;
+        z-index: 2;
+        background-color: black;
+        padding: 0 4px;
+        left: -100%;
+        transition: left 300ms ease-out;
+    }
+
+    div.button img {
+        display: block;
+    }
+
+    #close {
+        display: inline;
+    }
+
+    div.right {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 783px) {
+    html {
+        font-size: 14px;
+    }
+
+    div.playbtns {
+        position: static;
+    }
+
+    div.playbar {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    div.musicbar {
+        height: 150px;
+    }
+
+    div.title {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 406px) {
+    div.left {
+        width: 300px;
+        position: absolute;
+        z-index: 2;
+        background-color: black;
+        padding: 0 4px;
+        left: -150%;
+        transition: left 300ms ease-out;
+    }
+}
+
+@media screen and (max-width: 578px) {
+    div.cardholder {
+        justify-content: center;
+    }
+
+    div.card {
+        height: 290px;
+        width: 210px;
+        background-color: rgba(34, 34, 34, 0.7);
+        padding: 8px;
+        border-radius: 6px;
+        position: relative;
+        margin-right: 15px;
+    }
+
+}
+
+@media screen and (max-width: 502px) {
+    div.card {
+        height: 390px;
+        width: 310px;
+    }
+
+}
+@media screen and (max-width: 360px) {
+    div.container {
+        display: none;
+    }
+
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    body::before {
+        content: 'This website is not optimized for your device';
+        display: flex;
+        text-align: center;
+        padding: 20px;
+        font-size: 16px;
+    }
+}

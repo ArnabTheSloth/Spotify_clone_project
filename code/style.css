@@ -1,0 +1,561 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Montserrat, Roboto, Arial, Helvetica, sans-serif;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: #b3b3b3;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+body::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* Transparent track background */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #444;
+    /* Darker thumb */
+    border-radius: 6px;
+    border: 2px solid transparent;
+    /* Makes the thumb blend into the background */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+    /* Slightly lighter on hover */
+}
+
+/* Firefox */
+body {
+    scrollbar-width: thin;
+    /* Makes scrollbar thinner */
+    scrollbar-color: #444 transparent;
+    /* thumb color, transparent track */
+}
+
+/* Edge and IE11 */
+body {
+    -ms-overflow-style: none;
+    /* Hides default scrollbar in IE */
+}
+
+body::-ms-scrollbar {
+    width: 12px;
+}
+
+body::-ms-scrollbar-track {
+    background-color: transparent;
+}
+
+body::-ms-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 6px;
+}
+
+body::-ms-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+
+div.container {
+    height: 100%;
+    width: 100%;
+    padding: 6px;
+    display: flex;
+}
+
+div.left {
+    width: 25%;
+    height: 100%;
+    margin-right: 6px;
+    overflow: hidden;
+}
+
+div.right {
+    width: calc(75% - 6px);
+    height: 100%;
+    background-color: #121212;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+div.left div.top {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    width: 100%;
+    height: 20%;
+    background-color: #121212;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    padding: 20px;
+}
+
+#close {
+    display: none;
+    filter: invert(1);
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+div.left div.library {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(80% - 6px);
+    background-color: #121212;
+    border-radius: 6px;
+    padding: 8px 20px;
+}
+
+div.create,
+div.browse {
+    margin-bottom: 20px;
+    color: white;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+
+div.create h4,
+p,
+div.browse h4,
+p {
+    margin-bottom: 15px;
+}
+
+div.create h4,
+div.browse h4 {
+    font-size: 1rem;
+}
+
+div.create p,
+div.browse p {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+div.create button,
+div.browse button {
+    border: none;
+    font-size: 0.8rem;
+    padding: 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+div.create button:hover,
+div.browse button:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+div.head {
+    background-color: #121212;
+    width: 100%;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+div.main {
+    width: 100%;
+    height: calc(92% - 150px);
+    overflow: auto;
+    background-image: linear-gradient(180deg, rgba(34, 34, 34, 0.25) 0%, #121212 40%);
+    padding: 20px;
+}
+
+div.musicbar {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    background-color: black;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+div.playbar {
+    display: flex;
+    justify-content: space-between;
+    width: 91%;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+div.title {
+    width: 40%;
+}
+
+div.playbtns {
+    position: absolute;
+    top: 17px;
+    left: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+img.playbar1 {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#play {
+    height: 30px;
+    width: 30px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+div.volume {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+img.volume {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+div.seekbar {
+    border: 4px solid black;
+    background-color: white;
+    padding: 2px;
+    width: 92%;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+div.seekbar div.circle {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: -3px;
+    left: 0;
+}
+
+div.button {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.button img {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: none;
+}
+
+div.button img:hover,
+div.button img:active {
+    background-color: #383838;
+}
+
+div.button svg {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    padding: 4px;
+    background-color: black;
+    fill: rgb(179, 179, 179);
+    cursor: pointer;
+}
+
+div.button svg:hover {
+    background-color: #232323;
+}
+
+div.options {
+    height: 100%;
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    gap: 28px;
+}
+
+#sign {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#sign:hover {
+    color: white;
+    font-size: calc(1rem + 1px);
+}
+
+
+#log {
+    height: 70%;
+    width: 86px;
+    border-radius: 30px;
+    background-color: white;
+    color: black;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#log:hover {
+    background-color: rgba(255, 255, 255, 0.733);
+}
+
+div#logo {
+    width: 100%;
+}
+
+div#logo img {
+    width: 90px;
+}
+
+div.icon img {
+    width: 20px;
+}
+
+div.icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+div.icon2 {
+    margin-bottom: 40px !important;
+}
+
+div.icon span:hover {
+    color: white;
+}
+
+div.library svg {
+    position: absolute;
+    right: 0;
+}
+
+
+div.songlist ul li img {
+    width: 34px;
+    height: 34px
+}
+
+div.songlist {
+    width: 100%;
+    height: 70%;
+    overflow-y: auto;
+}
+
+div.songlist ul {
+    width: 100%;
+    list-style-type: none;
+    color: white;
+    font-size: 14px;
+    display: none;
+}
+
+div.songlist ul li {
+    width: 98%;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(179, 179, 179);
+    border-radius: 6px;
+    padding: 10px;
+    gap: 5px;
+    margin-bottom: 15px;
+    position: relative;
+    cursor: pointer;
+}
+
+div.songlist ul li div.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+}
+
+div.songlist ul li:hover div.overlay,
+div.songlist ul li:active div.overlay {
+    visibility: visible;
+}
+
+
+
+
+div.songlist ul li div {
+    width: 100%;
+}
+
+div.main h1 {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 40px;
+}
+
+div.cardholder {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+
+div.card {
+    height: 238px;
+    width: 160px;
+    background-color: rgba(34, 34, 34, 0.7);
+    padding: 8px;
+    border-radius: 6px;
+    position: relative;
+    margin-right: 15px;
+}
+
+
+div.card:hover img.playbtn {
+    top: 108px;
+    opacity: 1;
+}
+
+div.card:hover {
+    background-color: rgba(34, 34, 34, 1);
+    cursor: pointer;
+}
+
+div.card img {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+div.card h2 {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 11px;
+}
+
+div.card p {
+    font-weight: 600;
+    font-size: 0.9rem;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.card img.playbtn {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 128px;
+    right: 13px;
+    background-color: rgb(17, 181, 17);
+    border-radius: 50%;
+    padding: 4px;
+    opacity: 0;
+    transition: all 300ms ease-out;
+}
+
+/* Styling the track */
+input[type="range"] {
+    cursor: pointer;
+    -webkit-appearance: none;
+    /* Removes default styling in WebKit browsers */
+    appearance: none;
+    width: 90%;
+    /* Full width */
+    height: 6px;
+    /* Track height */
+    background: #4CAF50;
+    /* Track color */
+    outline: none;
+    /* No outline */
+    border-radius: 4px;
+    /* Rounded corners */
+    transition: opacity 0.2s;
+}
+
+input[type="range"]:hover {
+    opacity: 1;
+    /* Increase opacity on hover */
+}
+
+/* Styling the thumb (the handle) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    /* Thumb width */
+    height: 12px;
+    /* Thumb height */
+    background: #ffffff;
+    /* Thumb color */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    border-radius: 50%;
+    /* Make it circular */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    cursor: pointer;
+    border-radius: 50%;
+}
