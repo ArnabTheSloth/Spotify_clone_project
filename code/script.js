@@ -6,7 +6,7 @@
 // function checkMediaQuery() {
 //     mediaQuery = window.matchMedia("(max-width: 1020px)");
 //     const cards = document.querySelectorAll('div.card');
-    
+
 //     if (mediaQuery.matches) {  // If media query matches (screen width <= 1020px)
 //         cards.forEach((elem) => {
 //             elem.addEventListener('click', showLeftPanel.bind(this));
@@ -201,11 +201,10 @@ async function songdir(indices) {
 
     let index;
 
-    document.getElementsByClassName('playbar1')[0].addEventListener('click', (e) => {
+    document.getElementsByClassName('playbar1')[0].addEventListener('click', () => {
         index = songsurl.indexOf(currentAudio.src)
         if (index > 0) {
             currentAudio.pause()
-            // currentAudio.src = songsurl[index - 1]
             currentAudio = new Audio(songsurl[index - 1])
             document.querySelector('div.title').innerHTML = decodeURI(songsurl[index - 1].split('/').pop().replace('.mp3', ''))
             document.querySelector('div.duration').innerHTML = '00:00/00:00'
@@ -223,7 +222,6 @@ async function songdir(indices) {
         console.log(songsurl)
         if (index >= 0 && index < songsurl.length - 1) {
             currentAudio.pause()
-            // currentAudio.src = songsurl[index + 1]
             currentAudio = new Audio(songsurl[index + 1])
             document.querySelector('div.title').innerHTML = decodeURI(songsurl[index + 1].split('/').pop().replace('.mp3', ''))
             document.querySelector('div.duration').innerHTML = '00:00/00:00'
@@ -236,8 +234,8 @@ async function songdir(indices) {
 
     })
 
-    
-    
+
+
 }
 
 Array.from(document.querySelectorAll('div.card')).forEach((elem, index) => {
@@ -271,23 +269,23 @@ play.addEventListener('click', (e) => {
 })
 
 
-    let slider = document.querySelector('input.slider');
-    let volumeicon = document.querySelector('div.volume img');
+let slider = document.querySelector('input.slider');
+let volumeicon = document.querySelector('div.volume img');
 
-    volumeicon.addEventListener('click', (e) => {
-        if (slider.value !== '0') {
-            slider.value = '0'
-            updateSliderValue(slider)
-            e.target.src = '/assets/mute.svg'
-            currentAudio.volume = 0
-        }
-        else if (slider.value === '0') {
-            slider.value = '100'
-            updateSliderValue(slider)
-            e.target.src = '/assets/volume.svg'
-            currentAudio.volume = 1
-        }
-        else {
-            return;
-        }
-    })
+volumeicon.addEventListener('click', (e) => {
+    if (slider.value !== '0') {
+        slider.value = '0'
+        updateSliderValue(slider)
+        e.target.src = '/assets/mute.svg'
+        currentAudio.volume = 0
+    }
+    else if (slider.value === '0') {
+        slider.value = '100'
+        updateSliderValue(slider)
+        e.target.src = '/assets/volume.svg'
+        currentAudio.volume = 1
+    }
+    else {
+        return;
+    }
+})
