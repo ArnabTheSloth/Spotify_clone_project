@@ -236,6 +236,41 @@ async function songdir(indices) {
 
     })
 
+    
+    
+}
+
+Array.from(document.querySelectorAll('div.card')).forEach((elem, index) => {
+    elem.addEventListener('click', () => {
+        document.querySelector('.songlist div').style.display = 'none'
+        let div = document.querySelector('.songlist ul')
+        div.innerHTML = ''
+        div.style.display = 'block'
+        if (currentAudio) {
+            currentAudio.pause()
+        }
+        songdir(index)
+    })
+})
+
+play.addEventListener('click', (e) => {
+    if (currentAudio === null) {
+        return;
+    }
+
+    else if (currentAudio.paused) {
+        currentAudio.play()
+        currentAudio.addEventListener('timeupdate', timeupdatefunc)
+        play.src = '/assets/pause.svg'
+    }
+    else {
+        currentAudio.pause()
+        play.src = '/assets/play copy.svg'
+    }
+
+})
+
+
     let slider = document.querySelector('input.slider');
     let volumeicon = document.querySelector('div.volume img');
 
@@ -256,50 +291,3 @@ async function songdir(indices) {
             return;
         }
     })
-
-
-}
-
-Array.from(document.querySelectorAll('div.card')).forEach((elem, index) => {
-    elem.addEventListener('click', () => {
-        document.querySelector('.songlist div').style.display = 'none'
-        let div = document.querySelector('.songlist ul')
-        div.innerHTML = ''
-        div.style.display = 'block'
-        if (currentAudio) {
-            currentAudio.pause()
-        }
-        songdir(index)
-    })
-})
-
-play.addEventListener('click', (e) => {
-    // if (!currentAudio) {
-    //     currentAudio = new Audio(songsurl[0])
-    //     console.log(currentAudio)
-    //     document.querySelector('div.title').innerHTML = decodeURI(songsurl[0].split('/').pop().replace('.mp3', ''))
-    //     document.querySelector('div.duration').innerHTML = '00:00/00:00'
-    //     currentAudio.addEventListener('timeupdate', timeupdatefunc)
-    //     currentAudio.addEventListener('loadeddata', () => {
-    //         currentAudio.play()
-    //     })
-    //     play.src = '/assets/pause.svg'
-
-    // }
-
-    if (currentAudio === null) {
-        return;
-    }
-
-    else if (currentAudio.paused) {
-        currentAudio.play()
-        currentAudio.addEventListener('timeupdate', timeupdatefunc)
-        play.src = '/assets/pause.svg'
-    }
-    else {
-        currentAudio.pause()
-        play.src = '/assets/play copy.svg'
-    }
-
-})
-
