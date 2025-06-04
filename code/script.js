@@ -1,36 +1,3 @@
-// function showLeftPanel() {
-//     document.querySelector('div.left').style.left = '0';
-// }
-// let mediaQuery;
-
-// function checkMediaQuery() {
-//     mediaQuery = window.matchMedia("(max-width: 1020px)");
-//     const cards = document.querySelectorAll('div.card');
-
-//     if (mediaQuery.matches) {  // If media query matches (screen width <= 1020px)
-//         cards.forEach((elem) => {
-//             elem.addEventListener('click', showLeftPanel.bind(this));
-//         });
-
-//     } else {  // If media query does not match
-//         console.log("Media query does not match!");
-//         cards.forEach((elem) => {
-//             console.log("Removing event listener from card");
-//             elem.removeEventListener('click', showLeftPanel.bind(this));
-//         });
-//     }
-// }
-
-// // Run the media query check on load
-// document.addEventListener("DOMContentLoaded", () => {
-//     checkMediaQuery();
-//     window.addEventListener("resize", checkMediaQuery);
-// });
-
-
-//I don't have a single clue why this piece of code does not work
-
-
 //volume
 function updateSliderValue(slider) {
     const value = (slider.value - slider.min) / (slider.max - slider.min) * 100; // Calculate percentage
@@ -50,7 +17,7 @@ const play = document.getElementById('play');
 
 //Js for playing music
 async function fetchsong(index) {
-    let alpha = await fetch('http://127.0.0.1:5500/songs/')
+    let alpha = await fetch('../songs/')
     let response = await alpha.text()
     let div = document.createElement('div')
     div.innerHTML = response
@@ -112,7 +79,7 @@ const timeupdatefunc = () => {
 
         // Check if `play` is defined and valid
         if (play) {
-            play.src = '/assets/play copy.svg';
+            play.src = '../assets/play copy.svg';
         } else {
             console.error("The `play` element is not defined.");
         }
@@ -135,16 +102,16 @@ async function songdir(indices) {
     let div = document.querySelector('.songlist ul')
     for (let i = 0; i < songlist.length; i++) {
         div.innerHTML = div.innerHTML + `<li>
-                            <img src="/assets/music.svg" alt="">
+                            <img src="../assets/music.svg" alt="">
                             <div>${songlist[i]}</div>
-                            <div class="overlay"><img src="/assets/play.svg" alt=""></div>
+                            <div class="overlay"><img src="../assets/play.svg" alt=""></div>
                         </li>`
     }
 
     let listItems = document.querySelectorAll('.songlist ul li');
     currentAudio = new Audio(songsurl[0])
     currentAudio.play()
-    play.src = '/assets/pause.svg'
+    play.src = '../assets/pause.svg'
     currentAudio.addEventListener('timeupdate', timeupdatefunc)
     document.querySelector('div.title').innerHTML = decodeURI(songsurl[0].split('/').pop().replace('.mp3', ''))
     document.querySelector('div.duration').innerHTML = '00:00/00:00'
@@ -161,7 +128,7 @@ async function songdir(indices) {
             // Play the new song
             currentAudio = new Audio(songsurl[index]);
             currentAudio.play();
-            play.src = '/assets/pause.svg'
+            play.src = '../assets/pause.svg'
             document.querySelector('div.title').innerHTML = decodeURI(currentAudio.src.split('/').pop().replace('.mp3', ''))
             document.querySelector('div.duration').innerHTML = '00:00/00:00'
 
@@ -183,15 +150,15 @@ async function songdir(indices) {
     document.querySelector('input').addEventListener('input', (e) => {
         value = e.target.value
         if (value <= 50 && value > 0) {
-            document.querySelector('img.volume').src = '/assets/lessvolume.svg'
+            document.querySelector('img.volume').src = '../assets/lessvolume.svg'
         }
 
         else if (Number.parseInt(value) === 0) {
-            document.querySelector('img.volume').src = '/assets/mute.svg'
+            document.querySelector('img.volume').src = '../assets/mute.svg'
         }
 
         else {
-            document.querySelector('img.volume').src = '/assets/volume.svg'
+            document.querySelector('img.volume').src = '../assets/volume.svg'
         }
 
         if (currentAudio) {
@@ -212,7 +179,7 @@ async function songdir(indices) {
             currentAudio.addEventListener('loadeddata', () => {
                 currentAudio.play()
             })
-            play.src = '/assets/pause.svg'
+            play.src = '../assets/pause.svg'
         }
 
     })
@@ -229,7 +196,7 @@ async function songdir(indices) {
             currentAudio.addEventListener('loadeddata', () => {
                 currentAudio.play()
             })
-            play.src = '/assets/pause.svg'
+            play.src = '../assets/pause.svg'
         }
 
     })
@@ -259,11 +226,11 @@ play.addEventListener('click', (e) => {
     else if (currentAudio.paused) {
         currentAudio.play()
         currentAudio.addEventListener('timeupdate', timeupdatefunc)
-        play.src = '/assets/pause.svg'
+        play.src = '../assets/pause.svg'
     }
     else {
         currentAudio.pause()
-        play.src = '/assets/play copy.svg'
+        play.src = '../assets/play copy.svg'
     }
 
 })
@@ -276,13 +243,13 @@ volumeicon.addEventListener('click', (e) => {
     if (slider.value !== '0') {
         slider.value = '0'
         updateSliderValue(slider)
-        e.target.src = '/assets/mute.svg'
+        e.target.src = '../assets/mute.svg'
         currentAudio.volume = 0
     }
     else if (slider.value === '0') {
         slider.value = '100'
         updateSliderValue(slider)
-        e.target.src = '/assets/volume.svg'
+        e.target.src = '../assets/volume.svg'
         currentAudio.volume = 1
     }
     else {
